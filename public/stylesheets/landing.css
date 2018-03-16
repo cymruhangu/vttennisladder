@@ -1,0 +1,82 @@
+body {
+    background-color: #000;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 40s linear infinite; 
+}
+
+.slideshow li:nth-child(1) { 
+  /*background-image: url(http://i.imgur.com/K3mPv14.jpg) */ 
+  background-image: url(http://cdn.cnn.com/cnnnext/dam/assets/170830113302-federer-first-round-us-open-exlarge-169.jpg?auto=format&fit=crop&w=1350&q=80) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(https://www.atpworldtour.com/en/news/www.atpworldtour.com/-/media/images/news/2017/05/29/13/16/nadal-roland-garros-2017-monday1.jpg?auto=format&fit=crop&w=1350&q=80);
+  animation-delay: 8s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://si.wsj.net/public/resources/images/BN-MI241_2sCjb_M_20160128124142.jpg?auto=format&fit=crop&w=1350&q=80);
+  animation-delay: 16s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://www.atpworldtour.com/-/media/images/news/2017/10/21/16/17/del-potro-stockholm-2017-saturday.jpg?auto=format&fit=crop&w=1350&q=80);
+  animation-delay: 24s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://media.gq.com/photos/57d6cafcabdfd82b6a6a1d67/16:9/pass/stan-wawrinka.jpg?auto=format&fit=crop&w=1350&q=80);
+  animation-delay: 32s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}

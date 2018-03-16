@@ -1,0 +1,61 @@
+var mongoose = require("mongoose");
+/* A challenge initiates creation of a Match. match = !played = challenge*/
+/* The match object is updated when score is recorded */
+/* Player ranks are adjusted */
+
+var matchSchema = new mongoose.Schema({
+    ladder: String,
+    defAcked: Boolean,   /*defender acks challenge*/
+    challengeDate: {type:Date, default: Date.now},
+    matchDate: Date,  /*if !Date = match not played */
+    stretchChallenge: {type: Boolean, default: false}, 
+    rankChange: {type: Boolean, default: false},
+    challenger: {
+        id:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Player"
+        }, 
+        username: String,
+        firstName: String,
+        lastName: String
+    },
+    defender: {
+        id:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Player"
+        },
+        username: String,
+        firstName: String,
+        lastName: String
+    },
+    winner: {                   //Do I even need this?  if(!rankChange){winner=defender}
+        id:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Player"
+        },
+        username: String,
+        firstName: String,
+        lastName: String
+    },
+    matchScore: { 
+        chal1st: {type: Number, default: 0},
+        def1st: {type: Number, default: 0},
+        chalTB1: {type: Number, default: 0},
+        defTB1: {type: Number, default: 0},
+        chal2nd: {type: Number, default: 0},
+        def2nd: {type: Number, default: 0},
+        chalTB2: {type: Number, default: 0},
+        defTB2: {type: Number, default: 0},
+        chal3rd: {type: Number, default: 0},
+        def3rd: {type: Number, default: 0},
+        chalTB3: {type: Number, default: 0},
+        defTB3: {type: Number, default: 0}
+    },
+    chalPoints:{type:Number, default: 0},
+    defPoints:{type:Number, default: 0},
+    suggested: String,
+    Comment: [],
+    matchDefault: {type: Boolean, default: false}
+});
+
+module.exports = mongoose.model("Match", matchSchema);

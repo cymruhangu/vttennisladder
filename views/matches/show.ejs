@@ -1,0 +1,15 @@
+
+<% include ../partials/header %>
+<h1>MATCH INFO:</h1>
+<div>
+    <h4>CHALLENGER: <%=match.challenger.firstName%> <%=match.challenger.lastName%></h4>
+    <h4>DEFENDER: <%=match.defender.firstName%> <%=match.defender.lastName%></h4>
+    
+    <a class="btn btn-xs btn-warning" href="/matches/<%= match._id %>/edit">Edit</a>
+    <form class="delete-form" action="/matches/<%=match._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-xs btn-danger">Delete</button>
+    </form>
+    
+</div>
+
+<% include ../partials/footer %>

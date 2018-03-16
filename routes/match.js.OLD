@@ -1,0 +1,68 @@
+//MATCH ROUTES
+var express = require("express");
+var app = express();
+var router  = express.Router();
+var Match = require("../models/match");
+var Player = require("../models/player");
+//var middleware = require("../middleware");
+
+//INDEX - show all matches.  
+//Would we ever want to see all matches?  All completed maybe or all outstanding challenges but probbly never all.
+// router.get("/", function(req, res){
+//         //Get all matches from DB
+//         Match.find({}, function(err, allMatches){
+//           if(err){
+//               console.log(err);
+//           }else{
+//                 res.render("./matches/index", {allMatches});
+//                 console.log("RIGHT!");
+//           }
+//         });//.sort({challengeDate: 1});
+// });
+
+// NEW - challenge button.  Show new match form.  Not sure...might just create.
+
+
+router.get("/", function(req, res){
+    //find player by id
+    console.log(req.params.id);
+    Player.findById(req.params.id, function(err, foundPlayer){
+        if(err){
+            console.log(err);
+        }else {
+            console.log("player is" + " " + foundPlayer);
+            //res.render("matches/new", {player: foundPlayer});
+        }
+    })
+});
+
+//POST NEW MATCH
+router.post("/new", function(req, res){
+    var challenger = req.body.challenger;
+    var defender = req.body.defender;
+   //create new match and render a form with just players.
+   var newMatch = new Match({defender:defender, challenger:challenger});
+   Match.create(newMatch, function(err, newlyCreated){
+       if(err){
+           console.log(err);
+       } else {
+           console.log(newlyCreated);
+           //res.render("");
+       }
+   });
+   
+   //res.render("matches/new", {page: 'new'}); 
+});
+
+// CREATE - create match in DB
+
+
+// SHOW - show info about a specific match
+
+// EDIT - show match update form
+
+// UPDATE - update match in DB
+
+// DESTROY - delete a match from the DB.
+
+module.exports = router;

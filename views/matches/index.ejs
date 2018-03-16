@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+<h1>TENNIS LADDER MATCHES</h1>
+
+<div>
+   <ul class="ladder">
+   <% allMatches.forEach(function(match){ %>
+         <li>
+            <a href="/matches/<%=match.id%>"> Match: <%=match.challenger.firstName%>  <%=match.challenger.lastName%> vs <%=match.defender.firstName%> <%=match.defender.lastName%> </a>
+         </li>
+   <% }); %>
+   </ol>
+</div>
+ 
+<div>
+ 
+    
+ <% include ../partials/footer %>

@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+<h1>TENNIS LADDER STANDINGS</h1>
+
+<div id="container">
+   <ul class="ladder">
+   <% allPlayers.forEach(function(player){ %>
+      <% if(player.rank !== 999){ %>
+         <li>
+             <a href="/players/<%= player._id %>"><%=player.rank%>. <%= player.firstName %> <%= player.lastName %> </a>
+             <a class="btn btn-xs btn-outline-primary" href="/players/<%= player.id%>/matches/new">Challenge</a>
+             <a class="btn btn-xs btn-outline-success" href="/matches/edit">Record</a>
+         </li>
+         <%}%>   
+   <% }); %>
+   </ol>
+
+ 
+<div>
+   <h3>Purgatory:</h3>
+   <ul>
+   <% allPlayers.forEach(function(player){ %>
+      <% if(player.rank === 999){ %>
+          <li><a href="/players/<%=player._id %>" ><%= player.firstName %> <%= player.lastName %> </a> </li>
+         <%}%>   
+   <% }); %>
+   </ul>
+</div>
+</div>
+<div><a id="matches" href="/matches">GO TO MATCHES</a></div>
+    
+ <% include ../partials/footer %>

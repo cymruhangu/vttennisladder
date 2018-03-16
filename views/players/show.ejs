@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+<h1>PLAYER INFO:</h1>
+<div>
+    <h4>Username: <%=player.username%></h4>
+    <h4>First name: <%=player.firstName%></h4>
+    <h4>Last name: <%=player.lastName%></h4>
+    <h4>email: <%=player.email%></h4>
+    <h4>Ladder rank: <%=player.rank%></h4>
+    <h4>Matches played: <%=player.matches%></h4>
+    <a class="btn btn-xs btn-warning" href="/players/<%= player._id %>/edit">Edit</a>
+    <form class="delete-form" action="/players/<%=player._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-xs btn-danger">Delete</button>
+    </form>
+    <div>
+         <a class="btn btn-success" href="/players/<%=player._id %>/matches/new">Create a Match</a>
+    </div>
+    <form action="/players/<%=player._id %>/matches/new" method="POST">
+        <button class="btn btn-xs btn-primary">Challenge</button>
+    </form>
+    
+    </div>
+</div>
+
+<% include ../partials/footer %>
